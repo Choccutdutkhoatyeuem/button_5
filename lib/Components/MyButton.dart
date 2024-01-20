@@ -32,7 +32,6 @@ class CustomButton extends StatefulWidget {
 }
 
 class _CustomButtonState extends State<CustomButton> {
-  bool isCorrect = false;
   Color buttonColor = Colors.yellow;
 
   @override
@@ -41,13 +40,11 @@ class _CustomButtonState extends State<CustomButton> {
       onTap: () {
       if(widget.isCorrect){
         setState (() {
-          isCorrect = true;
           buttonColor = Colors.green;
         });
          widget.onTap("Correct") ;
         Future.delayed(const Duration(seconds: 1), (){
           setState(() {
-            isCorrect = true;
             buttonColor = Colors.yellow;
           });
           widget.onReset();
@@ -55,13 +52,11 @@ class _CustomButtonState extends State<CustomButton> {
         }
        else {
           setState(() {
-            isCorrect = false;
             buttonColor = Colors.red;
             });
               widget.onTap("InCorrect");
               Future.delayed(const Duration(seconds: 1), () {
                 setState(() {
-                isCorrect = true;
                 buttonColor = Colors.yellow;
             });
             widget.onReset();

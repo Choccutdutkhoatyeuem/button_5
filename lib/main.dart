@@ -21,7 +21,6 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   String waitingText = "Waiting...";
-  
   bool isCorrect = true ;
 
   @override
@@ -71,10 +70,9 @@ class _MyHomePageState extends State<MyHomePage> {
                     });
                   },
                   onReset: () {
-                    
-                      setState(() {
-                        waitingText = "Waiting...";
-                      });
+                    setState(() {
+                      waitingText = "Waiting...";
+                    });
                   }, 
                 ),
 
