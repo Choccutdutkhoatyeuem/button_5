@@ -40,7 +40,7 @@ class _CustomButtonState extends State<CustomButton> {
       onTap: () {
       if(widget.isCorrect){
         setState (() {
-          buttonColor = Colors.green;
+            buttonColor = Colors.green;
         });
          widget.onTap("Correct") ;
         Future.delayed(const Duration(seconds: 1), (){
