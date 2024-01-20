@@ -21,10 +21,12 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   String waitingText = "Waiting...";
+  
+  bool isCorrect = true ;
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+      return Scaffold(
       appBar: AppBar(
         title: const Center(
           child: Text("Pamyeuoi"),
@@ -44,8 +46,7 @@ class _MyHomePageState extends State<MyHomePage> {
             MyButton(
               buttons: [
                 CustomButton(
-                  id: 1,
-                  buttonColor: Colors.blue,
+                  isCorrect: false,
                   content: "Click Me!",
                   onTap: (value) {
                     setState(() {
@@ -56,19 +57,17 @@ class _MyHomePageState extends State<MyHomePage> {
                       setState(() {
                         waitingText = "Waiting...";
                       });
-                    },
+                    }, 
                   ),
 
                 const SizedBox(height: 20),
 
                 CustomButton(
-                  id: 2,
-                  buttonColor: Colors.red,
+                  isCorrect : false,
                   content: "Click Me!",
                   onTap: (value) {
                     setState(() {
                       waitingText = value;
-
                     });
                   },
                   onReset: () {
@@ -76,15 +75,13 @@ class _MyHomePageState extends State<MyHomePage> {
                       setState(() {
                         waitingText = "Waiting...";
                       });
-                    
-                  },
+                  }, 
                 ),
 
                 const SizedBox(height: 20),
 
                 CustomButton(
-                  id: 3,
-                  buttonColor: Colors.red,
+                  isCorrect : true,
                   content: "Click Me!",
                   onTap: (value) {
                     setState(() {
@@ -92,7 +89,6 @@ class _MyHomePageState extends State<MyHomePage> {
                     });
                   },                 
                   onReset: () {
-                    
                       setState(() {
                         waitingText = "Waiting...";
                       });
@@ -102,8 +98,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 const SizedBox(height: 20),
 
                 CustomButton(
-                  id: 4,
-                  buttonColor: Colors.red,
+                  isCorrect : true,
                   content: "Click Me!",
                   onTap: (value) {
                     setState(() {

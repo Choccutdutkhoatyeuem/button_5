@@ -18,15 +18,13 @@ class CustomButton extends StatefulWidget {
   final String content;
   final Function(String) onTap;
   final VoidCallback onReset;
-  final Color buttonColor;
-  final int id;
+  final bool isCorrect;
 
   CustomButton({
     required this.content,
     required this.onTap,
     required this.onReset,
-    required this.buttonColor,
-    required this.id,
+    required this.isCorrect,
   });
 
   @override
@@ -34,57 +32,47 @@ class CustomButton extends StatefulWidget {
 }
 
 class _CustomButtonState extends State<CustomButton> {
-  bool isCorrect = true;
+  bool isCorrect = false;
+  Color buttonColor = Colors.yellow;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      //onTap: () {
-        //setState(() {
-          //isCorrect = widget.id <= 1;
-       //});
-      
-        //widget.onTap(isCorrect ? "Correct" : "InCorrect");
-      
-        //Future.delayed(const Duration(seconds: 1), () {
-          //setState(() {
-           //isCorrect = true;
-        // });
-          //widget.onReset();
-        //});
-      //},
       onTap: () {
-        if (isCorrect = widget.id == 1) {
+      if(widget.isCorrect){
+        setState (() {
+          isCorrect = true;
+          buttonColor = Colors.green;
+        });
+         widget.onTap("Correct") ;
+        Future.delayed(const Duration(seconds: 1), (){
           setState(() {
             isCorrect = true;
+            buttonColor = Colors.yellow;
           });
-          widget.onTap( "Correct" );
-          Future.delayed(const Duration(seconds: 1), () {
-            setState(() {
-              isCorrect = true;
-            });
-            widget.onReset();
+          widget.onReset();
           });
-        } 
-          if (isCorrect = widget.id > 1 && widget.id <= 4) {
+        }
+       else {
           setState(() {
             isCorrect = false;
-          });
-         widget.onTap("InCorrect");
-          Future.delayed(const Duration(seconds: 1), () {
-            setState(() {
-              isCorrect = true;
+            buttonColor = Colors.red;
+            });
+              widget.onTap("InCorrect");
+              Future.delayed(const Duration(seconds: 1), () {
+                setState(() {
+                isCorrect = true;
+                buttonColor = Colors.yellow;
             });
             widget.onReset();
           });
         }
       },
-  
       child: Container(
         width: 200,
         height: 50,
         decoration: BoxDecoration(
-          color: isCorrect ?  Colors.yellow : widget.buttonColor,
+        color: buttonColor,
           borderRadius: BorderRadius.circular(8.0),
         ),
         child: Center(
